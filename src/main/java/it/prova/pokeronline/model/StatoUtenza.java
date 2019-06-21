@@ -6,11 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public enum StatoUtenza {
+public class StatoUtenza {
 
-	CREATO("Creato"),
-	ATTIVO("Attivo"),
-	INATTIVO("Inattivo");
+	public final static String CREATO = "Creato";
+	public final static String ATTIVO = "Attivo";
+	public final static String INATTIVO = "Inattivo";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,9 +18,15 @@ public enum StatoUtenza {
 	private String descrizione;
 	private String codice;
 	
-	private StatoUtenza(String descrizione) {
+	public StatoUtenza() {
+		
+	}
+
+	public StatoUtenza(Long id, String descrizione, String codice) {
+		super();
+		this.id = id;
 		this.descrizione = descrizione;
-		this.codice = this.name();
+		this.codice = codice;
 	}
 
 	public Long getId() {

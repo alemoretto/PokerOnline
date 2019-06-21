@@ -16,7 +16,7 @@
 	  <h3>Ricerca Utente</h3>
 	</div>
 
-      	<form class="form-horizontal" action="${pageContext.request.contextPath}/admin/utente/ExecuteRicercaUtenteServlet" method="post">
+      	<form class="form-horizontal" action="admin/search" method="post" commandName="utenteCommand">
       		<div class="form-group">
       			<label class="control-label col-sm-2" for="nomeInputId">Nome:</label>
 	    		<div class="col-sm-4">

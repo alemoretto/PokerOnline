@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +30,6 @@ public class Utente {
 
 	@ManyToOne
 	@JoinColumn(name = "statoUtenza_id", nullable = false)
-	@Enumerated(EnumType.STRING)
 	private StatoUtenza statoUtenza;
 	@Temporal(TemporalType.DATE)
 	private Date dataRegistrazione;
@@ -40,7 +37,6 @@ public class Utente {
 
 	@ManyToMany
 	@JoinTable(name = "utente_ruolo", joinColumns = @JoinColumn(name = "utente_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ruolo_id", referencedColumnName = "id"))
-	@Enumerated(EnumType.STRING)
 	private Set<Ruolo> ruoli = new HashSet<>(0);
 	private Integer esperienzaAccumulata;
 	private Double creditoAccumulato;
@@ -48,7 +44,7 @@ public class Utente {
 	@JoinColumn(name = "tavoloGiocato_id")
 	private Tavolo tavoloGiocato;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "creatore")
-	private Set<Tavolo> tavoliCreati;
+	private Set<Tavolo> tavoliCreati = new HashSet<>(0);;
 
 	public Utente() {
 

@@ -6,35 +6,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Ruolo {
+public enum Ruolo {
 	
-	public static final String ADMIN_ROLE = "ADMIN_ROLE"; 
-	public static final String CLASSIC_PLAYER_ROLE = "Giocatore";
-	public static final String SPECIAL_PLAYER_ROLE = "Giocatore Speciale";
+	ADMIN_ROLE("Amministratore"), 
+	CLASSIC_PLAYER_ROLE("Giocatore"),
+	SPECIAL_PLAYER_ROLE("Giocatore Speciale");
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String descrizione;
 	private String codice;
-	
-	public Ruolo() {
 		
-	}
-	
-	public Ruolo(Long id, String descrizione, String codice) {
-		super();
-		this.id = id;
+	private Ruolo(String descrizione) {
 		this.descrizione = descrizione;
-		this.codice = codice;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.codice = this.name();
 	}
 
 	public String getDescrizione() {
@@ -45,6 +31,14 @@ public class Ruolo {
 		this.descrizione = descrizione;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getCodice() {
 		return codice;
 	}
@@ -52,5 +46,5 @@ public class Ruolo {
 	public void setCodice(String codice) {
 		this.codice = codice;
 	}
-		
+
 }

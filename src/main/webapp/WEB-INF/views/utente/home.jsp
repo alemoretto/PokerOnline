@@ -9,7 +9,7 @@
 <body>
 
 	<div class="container">
-		<%@ include file="header.jsp"%>
+		<%@ include file="../header.jsp"%>
 
 		<div class="jumbotron">
 			<div class="container">
@@ -46,7 +46,7 @@
 
 
 
-			<%@ include file="footer.jsp"%>
+			<%@ include file="../footer.jsp"%>
 		</div>
 </body>
 </html>

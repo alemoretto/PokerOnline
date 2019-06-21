@@ -17,4 +17,6 @@ public interface UtenteService {
 	
 	public List<Utente> findByExample(Utente example);
 
+	public Utente eseguiAccesso(String username, String password);
+
 }

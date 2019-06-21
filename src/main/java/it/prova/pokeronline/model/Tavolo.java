@@ -32,6 +32,10 @@ public class Tavolo {
 	private Integer esperienzaMin;
 	private Double cifraMin;
 
+	public Tavolo() {
+		
+	}
+	
 	public Tavolo(Long id, Utente creatore, Date dataCreazione, Set<Utente> giocatori, Integer esperienzaMin,
 			Double cifraMin) {
 		super();

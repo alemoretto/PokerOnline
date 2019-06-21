@@ -56,4 +56,8 @@ public class UtenteServiceImpl implements UtenteService {
 		return (List<Utente>) utenteRepository.findAll(Example.of(exampleInput, matcher));
 	}
 
+	@Transactional(readOnly = true)
+	public Utente eseguiAccesso(String username, String password) {
+		return utenteRepository.findByUsernameAndPassword(username, password);
+	}
 }
