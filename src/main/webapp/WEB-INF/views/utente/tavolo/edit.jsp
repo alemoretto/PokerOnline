@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ricerca i tuoi Tavoli</title>
+<title>Modifica Tavolo</title>
 </head>
 <body>
 
@@ -13,39 +13,39 @@
    <%@ include file="../../header.jsp" %>
       
     <div class="page-header">
-	  <h3>Ricerca i tuoi Tavoli</h3>
+	  <h3>Modifica Tavolo</h3>
 	</div>
 
-      	<form:form class="form-horizontal" action="list" method="post" commandName="tavoloCommand">
+      	<form:form class="form-horizontal" action="update" method="post" commandName="tavoloCommand">
+      	
+			<form:hidden path="id"/>
+      		<form:hidden path="dataCreazione"/>
+      	
       		<div class="form-group">
       			<label class="control-label col-sm-2" for="denominazioneId">Denominazione:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="denominazioneId" name="denominazione" >
-			 	</div>
-  			</div>
-  			<div class="form-group">
-      			<label class="control-label col-sm-2" for="dataCreazioneId">Creato il:</label>
-	    		<div class="col-sm-4">
-					<input class="form-control" type="date" id="dataCreazioneId" name="dataCreazione" >
+					<form:input class="form-control" path="denominazione" id="denominazioneId" />
+					<form:errors path="denominazione" cssStyle="color:red;"/>
 			 	</div>
   			</div>
   			<div class="form-group">
       			<label class="control-label col-sm-2" for="esperienzaMinId">Esperienza minima:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="number" id="esperienzaMinId" name="esperienzaMin" >
+					<form:input class="form-control" path="esperienzaMin" id="esperienzaMinId" />
+					<form:errors path="esperienzaMin" cssStyle="color:red;"/>
 			 	</div>
   			</div>
 			<div class="form-group">
       			<label class="control-label col-sm-2" for="cifraMinId">Puntata minima:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="number" id="cifraMinId" name="cifraMin" >
+					<form:input class="form-control" path="cifraMin" id="cifraMinId" />
+					<form:errors path="cifraMin" cssStyle="color:red;"/>
 			 	</div>
   			</div>
 			
   			<div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
-		        <button type="submit" class="btn btn-primary btn-md">Effettua Ricerca</button>
-		        <a href="create" class="btn btn-primary btn-md">Inserisci nuovo Tavolo</a>
+		        <button type="submit" class="btn btn-primary btn-md">Aggiorna</button>
 		      </div>
 		    </div>
 		</form:form>

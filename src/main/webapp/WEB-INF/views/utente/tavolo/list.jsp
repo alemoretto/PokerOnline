@@ -18,9 +18,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Id</th>
 					<th>Denominazione</th>
-					<th>Data creazione</th>
 					<th>Esperienza minima</th>
 					<th>Puntata minima</th>
 					<th>Action</th>
@@ -29,9 +27,7 @@
 			<tbody>
 				<c:forEach items="${listTavoli }" var="tavoloItem">
 					<tr>
-						<td>${tavoloItem.id }</td>
 						<td>${tavoloItem.denominazione }</td>
-						<td>${tavoloItem.dataCreazione }</td>
 						<td>${tavoloItem.esperienzaMin }</td>
 						<td>${tavoloItem.cifraMin }</td>
 						<td><a

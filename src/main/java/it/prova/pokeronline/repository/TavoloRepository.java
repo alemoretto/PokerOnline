@@ -12,4 +12,7 @@ public interface TavoloRepository extends CrudRepository<Tavolo, Long>, QueryByE
 	
 	List<Tavolo> findByCreatore(Utente creatore);
 	
+////	@Query("from Tavolo t JOIN FETCH t.giocatori where t.id = ?1")
+//	Tavolo findOneWithGiocatori(Long id);
+	
 }

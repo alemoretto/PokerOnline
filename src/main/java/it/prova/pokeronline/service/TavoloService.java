@@ -19,5 +19,7 @@ public interface TavoloService {
 	public List<Tavolo> findByExample(Tavolo example);
 	
 	public List<Tavolo> listMieiTavoli(Utente creatore);
+	
+//	public void rimuoviSePossibile(Tavolo tavoloInstance);
 
 }

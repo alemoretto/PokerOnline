@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ricerca i tuoi Tavoli</title>
+<title>Inserisci un nuovo Tavolo</title>
 </head>
 <body>
 

@@ -18,6 +18,18 @@ public class TavoloDTO {
 	private Integer esperienzaMin;
 	private Double cifraMin;
 
+	public TavoloDTO(Long id, String denominazione, Date dataCreazione, Integer esperienzaMin, Double cifraMin) {
+		super();
+		this.id = id;
+		this.denominazione = denominazione;
+		this.dataCreazione = dataCreazione;
+		this.esperienzaMin = esperienzaMin;
+		this.cifraMin = cifraMin;
+	}
+
+	public TavoloDTO() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -58,6 +70,11 @@ public class TavoloDTO {
 		this.cifraMin = cifraMin;
 	}
 
+	public static TavoloDTO buildTavoloDTOInstance(Tavolo tavolo) {
+		return new TavoloDTO(tavolo.getId(),tavolo.getDenominazione(),tavolo.getDataCreazione(),
+				tavolo.getEsperienzaMin(), tavolo.getCifraMin());
+	}
+	
 	public static Tavolo buildTavoloInstanceForFindByExample(TavoloDTO input) {
 		Tavolo example = new Tavolo();
 		example.setDenominazione(StringUtils.isNotBlank(input.getDenominazione()) ? input.getDenominazione() : null);

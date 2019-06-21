@@ -61,4 +61,13 @@ public class TavoloServiceImpl implements TavoloService {
 		return tavoloRepository.findByCreatore(creatore);
 	}
 
+//	@Override
+//	public void rimuoviSePossibile(Tavolo tavoloInstance) {
+//		if(tavoloRepository.findOneWithGiocatori(tavoloInstance.getId()).getGiocatori().size() > 0) {
+//			return;
+//		}
+//		
+//		tavoloRepository.delete(tavoloInstance);
+//	}
+
 }
