@@ -16,38 +16,38 @@
 	  <h3>Ricerca Utente</h3>
 	</div>
 
-      	<form class="form-horizontal" action="admin/search" method="post" commandName="utenteCommand">
+      	<form:form class="form-horizontal" action="admin/search" method="post" commandName="utenteCommand">
       		<div class="form-group">
-      			<label class="control-label col-sm-2" for="nomeInputId">Nome:</label>
+      			<label class="control-label col-sm-2" for="nomeId">Nome:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="nomeInputId" name="nomeInput" >
+					<input class="form-control" type="text" id="nomeId" name="nome" >
 			 	</div>
   			</div>
   			<div class="form-group">
-      			<label class="control-label col-sm-2" for="cognomeInputId">Cognome:</label>
+      			<label class="control-label col-sm-2" for="cognomeId">Cognome:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="cognomeInputId" name="cognomeInput" >
+					<input class="form-control" type="text" id="cognomeId" name="cognome" >
 			 	</div>
   			</div>
 			<div class="form-group">
-      			<label class="control-label col-sm-2" for="usernameInputId">Username:</label>
+      			<label class="control-label col-sm-2" for="usernameId">Username:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="userInputId" name="usernameInput" >
+					<input class="form-control" type="text" id="usernameId" name="username" >
 			 	</div>
   			</div>
 			<div class="form-group">
-      			<label class="control-label col-sm-2" for="passwordInputId">Password:</label>
+      			<label class="control-label col-sm-2" for="passwordId">Password:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="passwordInputId" name="passwordInput" >
+					<input class="form-control" type="text" id="passwordId" name="password" >
 			 	</div>
   			</div>
   			<div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button type="submit" class="btn btn-primary btn-md">Effettua Ricerca</button>
-		        <a href="${pageContext.request.contextPath}/admin/utente/PrepareInserisciUtenteServlet" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
+		        <a href="admin/insert" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
 		      </div>
 		    </div>
-		</form>
+		</form:form>
 		
     </div><!-- /.container -->
 
