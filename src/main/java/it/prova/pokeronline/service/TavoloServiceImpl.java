@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.pokeronline.model.Tavolo;
+import it.prova.pokeronline.model.Utente;
 import it.prova.pokeronline.repository.TavoloRepository;
 
 @Service
@@ -48,12 +49,16 @@ public class TavoloServiceImpl implements TavoloService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tavolo> findByExample(Tavolo exampleInput) {
-		ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(StringMatcher.CONTAINING); 
+		ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(StringMatcher.CONTAINING);
 		// Match string
 		// containing
 		// pattern
 		// .withIgnoreCase();
 		return (List<Tavolo>) tavoloRepository.findAll(Example.of(exampleInput, matcher));
+	}
+
+	public List<Tavolo> listMieiTavoli(Utente creatore) {
+		return tavoloRepository.findByCreatore(creatore);
 	}
 
 }
