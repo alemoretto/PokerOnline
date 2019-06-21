@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public enum StatoUtenza {
 
 	CREATO("Creato"),
-	ATTIVO("Attivo");
-//	INATTIVO("Inattivo");
+	ATTIVO("Attivo"),
+	INATTIVO("Inattivo");
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

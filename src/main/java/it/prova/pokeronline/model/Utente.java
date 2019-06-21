@@ -31,6 +31,7 @@ public class Utente {
 	private String password;
 
 	@ManyToOne
+	@JoinColumn(name = "statoUtenza_id", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatoUtenza statoUtenza;
 	@Temporal(TemporalType.DATE)
