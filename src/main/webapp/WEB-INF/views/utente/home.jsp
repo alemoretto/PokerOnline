@@ -26,8 +26,8 @@
 					<h1 class="display-4">Gestione Tavoli</h1>
 					<p>
 						<a class="btn btn-primary btn-lg"
-							href="${pageContext.request.contextPath}/tavolo/search"
-							role="button">Vai alla Gestione Tavoli &raquo;</a>
+							href="${pageContext.request.contextPath}/utente/tavolo/search"
+							role="button">Gestisci i tuoi Tavoli &raquo;</a>
 					</p>
 				</div>
 			</div>

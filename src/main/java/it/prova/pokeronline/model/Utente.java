@@ -40,7 +40,7 @@ public class Utente {
 	private Set<Ruolo> ruoli = new HashSet<>(0);
 	private Integer esperienzaAccumulata;
 	private Double creditoAccumulato;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "tavoloGiocato_id")
 	private Tavolo tavoloGiocato;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "creatore")

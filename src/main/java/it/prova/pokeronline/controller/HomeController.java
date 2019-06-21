@@ -36,8 +36,10 @@ public class HomeController {
 	public ModelAndView login(@ModelAttribute("utenteCommand") Utente utenteInstance, Model model, HttpSession session) {
 		
 		Utente utenteCheAccede = utenteService.eseguiAccesso(utenteInstance.getUsername(), utenteInstance.getPassword());
-		if(utenteCheAccede != null)
+		if(utenteCheAccede != null) {
+			session.setAttribute("userInfo", utenteCheAccede);
 			return new ModelAndView("utente/home");
+		}
 		
 		return new ModelAndView("login");
 	}
