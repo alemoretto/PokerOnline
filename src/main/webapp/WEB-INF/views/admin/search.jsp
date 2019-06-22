@@ -16,7 +16,7 @@
 	  <h3>Ricerca Utente</h3>
 	</div>
 
-      	<form:form class="form-horizontal" action="admin/search" method="post" commandName="utenteCommand">
+      	<form:form class="form-horizontal" action="list" method="post" commandName="utenteCommand">
       		<div class="form-group">
       			<label class="control-label col-sm-2" for="nomeId">Nome:</label>
 	    		<div class="col-sm-4">
@@ -35,16 +35,10 @@
 					<input class="form-control" type="text" id="usernameId" name="username" >
 			 	</div>
   			</div>
-			<div class="form-group">
-      			<label class="control-label col-sm-2" for="passwordId">Password:</label>
-	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="passwordId" name="password" >
-			 	</div>
-  			</div>
   			<div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button type="submit" class="btn btn-primary btn-md">Effettua Ricerca</button>
-		        <a href="admin/insert" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
+		        <a href="insert" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
 		      </div>
 		    </div>
 		</form:form>

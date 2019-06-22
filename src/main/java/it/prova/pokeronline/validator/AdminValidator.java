@@ -20,5 +20,6 @@ public class AdminValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "required", "Campo obbligatorio.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required", "Campo obbligatorio.");
 
+		
 	}
 }
