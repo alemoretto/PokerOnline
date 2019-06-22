@@ -15,6 +15,9 @@
 		<div class="page-header">
 			<h3>Pagina di Dettaglio</h3>
 		</div>
+		<c:if test="${erroreTavoloPieno != null}">
+			<div class="alert alert-danger">
+				${erroreTavoloPieno}</div></c:if>
 		<div class="container-fluid">
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Id</dt>
@@ -37,10 +40,19 @@
 				<dd class="col-sm-9">${tavoloCommand.cifraMin }</dd>
 			</dl>
 		</div>
+		<p>--${tavoloCommand.creatore }--</p>
+		<c:forEach items="${tavoloCommand.giocatori}" var="giocatoreItem">
+		<p>${giocatoreItem.nome }</p>
+		</c:forEach>
 		<div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
-	        <a href="delete" class="btn btn-primary btn-md">Torna alla lista</a>
+	        <a href="delete?idTavolo=${tavoloCommand.id}" class="btn btn-primary btn-md">Rimuovi</a>  <a href="list" class="btn btn-primary btn-md">Torna alla lista</a>
 	      </div>
+<!-- 	      <div class="form-group">         -->
+<!-- 	      <div class="col-sm-offset-2 col-sm-10"> -->
+<!-- 	        <a href="list" class="btn btn-primary btn-md">Torna alla lista</a> -->
+<!-- 	      </div> -->
+<!-- 	    </div> -->
 	    </div>
 
 	</div>

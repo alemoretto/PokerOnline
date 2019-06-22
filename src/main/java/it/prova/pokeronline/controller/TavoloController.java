@@ -108,16 +108,27 @@ public class TavoloController {
 	
 	@RequestMapping(value ="prepareDelete", method = RequestMethod.GET)
     public String prepareDelete(@RequestParam("idTavolo") Long idTavolo, Model model){
-		model.addAttribute("tavoloCommand", TavoloDTO.buildTavoloDTOInstance(tavoloService.caricaSingolo(idTavolo)));
+		model.addAttribute("tavoloCommand", TavoloDTO.buildTavoloDTOInstance(tavoloService.caricaConGiocatori(idTavolo)));
         return "utente/tavolo/delete";
     }
 	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("idTavolo") Long idTavolo, Model model, HttpSession session) {
 
-		
-		tavoloService.rimuoviSePossibile(tavoloService.caricaSingolo(idTavolo));
+		Tavolo tavoloDaEliminare = tavoloService.caricaConGiocatori(idTavolo);
+		if(!tavoloDaEliminare.getGiocatori().isEmpty()) {
+			model.addAttribute("erroreTavoloPieno","Questo tavolo non può essere eliminato perchè ci sono ancora giocatori");
+			model.addAttribute("tavoloCommand", TavoloDTO.buildTavoloDTOInstance(tavoloService.caricaConGiocatori(idTavolo)));
 
+//			model.addAttribute("listTavoli", tavoloService.listMieiTavoli((Utente) session.getAttribute("userInfo")));
+			return "utente/tavolo/delete";
+		}
+		tavoloService.rimuovi(tavoloService.caricaSingolo(idTavolo));
+//		tavoloService.rimuoviSePossibile(idTavolo);
+//		Tavolo tavoloDaEliminare = tavoloService.findByIdAndGiocatori(idTavolo);
+//		if(tavoloDaEliminare != null && tavoloDaEliminare.getGiocatori().isEmpty()) {
+//			return "utente/tavolo/list";
+//		}
 		model.addAttribute("listTavoli", tavoloService.listMieiTavoli((Utente) session.getAttribute("userInfo")));
 		return "utente/tavolo/list";
 	}

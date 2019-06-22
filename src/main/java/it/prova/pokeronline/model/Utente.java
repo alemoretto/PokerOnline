@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Utente {
 	@ManyToOne
 	@JoinColumn(name = "tavoloGiocato_id")
 	private Tavolo tavoloGiocato;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "creatore")
+	@OneToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL, mappedBy = "creatore")
 	private Set<Tavolo> tavoliCreati = new HashSet<>(0);;
 
 	public Utente() {
@@ -154,4 +155,7 @@ public class Utente {
 		this.tavoliCreati = tavoliCreati;
 	}
 
+	public String toString() {
+		return nome + " " + cognome;
+	}
 }

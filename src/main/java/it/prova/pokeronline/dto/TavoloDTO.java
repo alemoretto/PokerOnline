@@ -1,20 +1,23 @@
 package it.prova.pokeronline.dto;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import it.prova.pokeronline.model.Tavolo;
+import it.prova.pokeronline.model.Utente;
 
 public class TavoloDTO {
 
 	private Long id;
 	private String denominazione;
-//	private Utente creatore;
+	private Utente creatore;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataCreazione;
-//	private Set<Utente> giocatori = new HashSet<>(0);
+	private Set<Utente> giocatori = new HashSet<>(0);
 	private Integer esperienzaMin;
 	private Double cifraMin;
 
@@ -70,9 +73,30 @@ public class TavoloDTO {
 		this.cifraMin = cifraMin;
 	}
 
+	public Utente getCreatore() {
+		return creatore;
+	}
+
+	public void setCreatore(Utente creatore) {
+		this.creatore = creatore;
+	}
+
+	public Set<Utente> getGiocatori() {
+		return giocatori;
+	}
+
+	public void setGiocatori(Set<Utente> giocatori) {
+		this.giocatori = giocatori;
+	}
+
 	public static TavoloDTO buildTavoloDTOInstance(Tavolo tavolo) {
-		return new TavoloDTO(tavolo.getId(),tavolo.getDenominazione(),tavolo.getDataCreazione(),
+		TavoloDTO tavoloDTO = new TavoloDTO(tavolo.getId(),tavolo.getDenominazione(),tavolo.getDataCreazione(),
 				tavolo.getEsperienzaMin(), tavolo.getCifraMin());
+		tavoloDTO.setCreatore(tavolo.getCreatore());
+		tavoloDTO.setGiocatori(tavolo.getGiocatori());
+		
+		return tavoloDTO;
+		
 	}
 	
 	public static Tavolo buildTavoloInstanceForFindByExample(TavoloDTO input) {

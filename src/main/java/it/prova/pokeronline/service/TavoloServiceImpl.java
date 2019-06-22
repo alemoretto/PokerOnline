@@ -57,17 +57,31 @@ public class TavoloServiceImpl implements TavoloService {
 		return (List<Tavolo>) tavoloRepository.findAll(Example.of(exampleInput, matcher));
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Tavolo> listMieiTavoli(Utente creatore) {
 		return tavoloRepository.findByCreatore(creatore);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Tavolo caricaConGiocatori(Long id) {
+		return tavoloRepository.caricaConGiocatori(id);
+	}
+	
 //	@Override
-//	public void rimuoviSePossibile(Tavolo tavoloInstance) {
-//		if(tavoloRepository.findOneWithGiocatori(tavoloInstance.getId()).getGiocatori().size() > 0) {
+//	public void rimuoviSePossibile(Long id) {
+//		Tavolo tavoloDaEliminare = tavoloRepository.findOneConGiocatori(id);
+//		if(tavoloDaEliminare != null && tavoloDaEliminare.getGiocatori().isEmpty()) {
 //			return;
 //		}
 //		
-//		tavoloRepository.delete(tavoloInstance);
+//		tavoloRepository.delete(tavoloRepository.findOne(id));
 //	}
-
+	
+//	@Override
+//	@Transactional(readOnly = true)
+//	public Tavolo findByIdAndGiocatori(Long id) {
+//		return tavoloRepository.findByIdAndGiocatori(id);
+//	}
 }

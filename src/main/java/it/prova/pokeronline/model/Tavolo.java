@@ -22,7 +22,7 @@ public class Tavolo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String denominazione;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utenteCreatore_id", nullable = false)
 	private Utente creatore;
 	@Temporal(TemporalType.DATE)

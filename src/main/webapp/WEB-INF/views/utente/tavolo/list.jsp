@@ -35,7 +35,7 @@
 							class="btn btn-info">Dettaglio</a> <a
 							href="edit?idTavolo=${tavoloItem.id }"
 							class="btn btn-info">Modifica</a> <a
-							href="delete?idTavolo=${tavoloItem.id }"
+							href="prepareDelete?idTavolo=${tavoloItem.id }"
 							class="btn btn-info">Elimina</a></td>
 							
 					</tr>

@@ -20,6 +20,10 @@ public interface TavoloService {
 	
 	public List<Tavolo> listMieiTavoli(Utente creatore);
 	
-//	public void rimuoviSePossibile(Tavolo tavoloInstance);
+//	public void rimuoviSePossibile(Long id);
+	
+	public Tavolo caricaConGiocatori(Long id);
+	
+	//	public Tavolo findByIdAndGiocatori(Long id);
 
 }
