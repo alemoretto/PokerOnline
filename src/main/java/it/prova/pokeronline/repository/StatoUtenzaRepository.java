@@ -7,4 +7,6 @@ import it.prova.pokeronline.model.StatoUtenza;
 
 public interface StatoUtenzaRepository extends CrudRepository<StatoUtenza, Long>, QueryByExampleExecutor<StatoUtenza>{
 	
+	public StatoUtenza findByCodice(String codice);
+	
 }

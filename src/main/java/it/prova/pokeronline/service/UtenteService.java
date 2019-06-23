@@ -20,5 +20,9 @@ public interface UtenteService {
 	public Utente eseguiAccesso(String username, String password);
 
 	public Utente caricaSingoloConStatoERuoli(Long id);
+	
+	public Utente caricaSingoloCompleto(Long id);
+	
+	public Utente findByUsername(String username);
 
 }

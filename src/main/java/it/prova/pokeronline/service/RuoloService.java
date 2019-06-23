@@ -17,4 +17,5 @@ public interface RuoloService {
 	
 	public List<Ruolo> findByExample(Ruolo example);
 
+	public Ruolo findByCodice(String codice);
 }

@@ -13,7 +13,7 @@
 		<%@ include file="../../header.jsp"%>
 
 		<div class="page-header">
-			<h3>Pagina di Dettaglio</h3>
+			<h3>Pagina di Rimozione</h3>
 		</div>
 		<c:if test="${erroreTavoloPieno != null}">
 			<div class="alert alert-danger">
@@ -39,20 +39,22 @@
 				<dt class="col-sm-3 text-right">Puntata minima</dt>
 				<dd class="col-sm-9">${tavoloCommand.cifraMin }</dd>
 			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Giocatori</dt>
+				<dd class="col-sm-9">
+				<c:forEach items="${tavoloCommand.giocatori}" var="giocatoreItem" varStatus="loop">
+				${giocatoreItem.username }
+				<c:if test="${tavoloCommand.giocatori.size()-1 > loop.index}">, </c:if>
+				</c:forEach>
+				</dd>
+			</dl>
 		</div>
-		<p>--${tavoloCommand.creatore }--</p>
-		<c:forEach items="${tavoloCommand.giocatori}" var="giocatoreItem">
-		<p>${giocatoreItem.nome }</p>
-		</c:forEach>
 		<div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
 	        <a href="delete?idTavolo=${tavoloCommand.id}" class="btn btn-primary btn-md">Rimuovi</a>  <a href="list" class="btn btn-primary btn-md">Torna alla lista</a>
 	      </div>
-<!-- 	      <div class="form-group">         -->
-<!-- 	      <div class="col-sm-offset-2 col-sm-10"> -->
-<!-- 	        <a href="list" class="btn btn-primary btn-md">Torna alla lista</a> -->
-<!-- 	      </div> -->
-<!-- 	    </div> -->
+
+
 	    </div>
 
 	</div>

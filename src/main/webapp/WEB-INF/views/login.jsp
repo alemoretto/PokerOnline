@@ -23,13 +23,13 @@
       <label for="passwordId" class="sr-only">Password</label>
       <input type="password" name="password" id="passwordId" class="form-control" placeholder="Password" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Accedi</button>
+      <a href="<%= request.getContextPath() %>/prepareSignup">Registrati</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form:form>
       <br>
-<%--       <a href="<%= request.getContextPath() %>/signUp.jsp">Registrati</a> --%>
-<!--       <form class="form-signin" action="SignUpServlet" method="post"> -->
+<%--       <form class="form-signin" action="signup" method="post"> --%>
 <!-- 	    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button> -->
-<!-- 	        </form> -->
+<%-- 	        </form> --%>
   </body>
 </html>
 

@@ -20,6 +20,12 @@ public class StatoUtenzaServiceImpl implements StatoUtenzaService {
 
 	@Override
 	@Transactional(readOnly = true)
+	public StatoUtenza findByCodice(String codice) {
+		return statoUtenzaRepository.findByCodice(codice);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
 	public List<StatoUtenza> listAllStatiUtenza() {
 		return (List<StatoUtenza>) statoUtenzaRepository.findAll();
 	}

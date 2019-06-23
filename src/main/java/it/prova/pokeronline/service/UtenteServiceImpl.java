@@ -37,6 +37,12 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
+	public Utente caricaSingoloCompleto(Long id) {
+		return utenteRepository.caricaSingoloCompleto(id);
+	}
+
+	@Override
 	public void aggiorna(Utente utenteInstance) {
 		utenteRepository.save(utenteInstance);
 	}
@@ -65,5 +71,10 @@ public class UtenteServiceImpl implements UtenteService {
 	@Transactional(readOnly = true)
 	public Utente eseguiAccesso(String username, String password) {
 		return utenteRepository.findByUsernameAndPassword(username, password);
+	}
+	
+	@Transactional(readOnly = true)
+	public Utente findByUsername(String username) {
+		return utenteRepository.findByUsername(username);
 	}
 }

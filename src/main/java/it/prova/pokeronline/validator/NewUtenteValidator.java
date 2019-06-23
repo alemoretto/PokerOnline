@@ -6,7 +6,7 @@ import org.springframework.validation.Validator;
 
 import it.prova.pokeronline.dto.UtenteDTO;
 
-public class AdminValidator implements Validator {
+public class NewUtenteValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -19,14 +19,6 @@ public class AdminValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome", "required", "Campo obbligatorio");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "required", "Campo obbligatorio");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required", "Campo obbligatorio");
-
-		UtenteDTO utenteDTO = (UtenteDTO) arg0;
-		if (utenteDTO.getStatoUtenza().getId() == -1L) {
-			errors.rejectValue("statoUtenza", "required", "Seleziona uno stato");
-		}
-			if (utenteDTO.getRuoli() == null || utenteDTO.getRuoli().isEmpty()) {
-				errors.rejectValue("ruoli", "required", "Selezionare almeno un ruolo");
-			}
 
 	}
 }

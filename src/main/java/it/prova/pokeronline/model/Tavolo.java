@@ -36,6 +36,17 @@ public class Tavolo {
 		
 	}
 	
+	public Tavolo(Long id, String denominazione, Utente creatore, Date dataCreazione, Integer esperienzaMin,
+			Double cifraMin) {
+		super();
+		this.id = id;
+		this.denominazione = denominazione;
+		this.creatore = creatore;
+		this.dataCreazione = dataCreazione;
+		this.esperienzaMin = esperienzaMin;
+		this.cifraMin = cifraMin;
+	}
+	
 	public Tavolo(Long id, Utente creatore, Date dataCreazione, Set<Utente> giocatori, Integer esperienzaMin,
 			Double cifraMin) {
 		super();

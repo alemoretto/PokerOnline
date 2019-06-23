@@ -21,7 +21,6 @@
 					<th>Nome</th>
 					<th>Cognome</th>
 					<th>Username</th>
-					<th>Password</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,7 +29,6 @@
 						<td>${utenteItem.nome }</td>
 						<td>${utenteItem.cognome }</td>
 						<td>${utenteItem.username }</td>
-						<td>${utenteItem.password }</td>
 						<td><a
 							href="show?idUtente=${utenteItem.id }"
 							class="btn btn-info">Dettaglio</a> <a

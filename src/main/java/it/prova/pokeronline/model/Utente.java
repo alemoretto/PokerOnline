@@ -45,12 +45,36 @@ public class Utente {
 	@JoinColumn(name = "tavoloGiocato_id")
 	private Tavolo tavoloGiocato;
 	@OneToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL, mappedBy = "creatore")
-	private Set<Tavolo> tavoliCreati = new HashSet<>(0);;
+	private Set<Tavolo> tavoliCreati = new HashSet<>(0);
 
 	public Utente() {
 
 	}
 
+	public Utente(String username) {
+		this.username = username;
+	}
+	
+	public Utente(Long id, String nome, String cognome, String username, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.password = password;
+	}
+
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (obj == null) {
+	            return false;
+	        }
+	        if (! (obj instanceof Utente)) {
+	            return false;
+	        }
+	        return this.username.equals(((Utente)obj).getUsername());
+	    }
+	 
 	public Long getId() {
 		return id;
 	}

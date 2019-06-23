@@ -9,6 +9,8 @@ public interface StatoUtenzaService {
 	
 	public StatoUtenza caricaSingolo(Long id);
 	
+	public StatoUtenza findByCodice(String codice);
+	
 	public void aggiorna(StatoUtenza statoUtenzaInstance);
 	
 	public void inserisciNuovo(StatoUtenza statoUtenzaInstance);

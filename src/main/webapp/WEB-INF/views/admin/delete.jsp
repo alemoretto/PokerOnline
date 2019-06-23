@@ -13,8 +13,12 @@
 		<%@ include file="../header.jsp"%>
 
 		<div class="page-header">
-			<h3>Pagina di Dettaglio</h3>
+			<h3>Pagina di Rimozione</h3>
 		</div>
+		<c:if test="${erroreTavoliCreati != null}">
+			<div class="alert alert-danger">
+				${erroreTavoliCreati}</div></c:if>
+				
 		<div class="container-fluid">
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Id</dt>
@@ -75,7 +79,7 @@
 		</div>
 		<div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
-	        <a href="list" class="btn btn-primary btn-md">Torna alla lista</a>
+	          <a href="delete?idUtente=${utenteCommand.id}" class="btn btn-primary btn-md">Rimuovi</a> <a href="list" class="btn btn-primary btn-md">Torna alla lista</a>
 	      </div>
 	    </div>
 

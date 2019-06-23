@@ -1,16 +1,14 @@
 package it.prova.pokeronline.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import it.prova.pokeronline.model.Ruolo;
-import it.prova.pokeronline.model.StatoUtenza;
+import it.prova.pokeronline.model.Tavolo;
 import it.prova.pokeronline.model.Utente;
 
 public class UtenteDTO {
@@ -23,11 +21,10 @@ public class UtenteDTO {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataRegistrazione;
 	private StatoUtenzaDTO statoUtenza;
-	private Set<Ruolo> ruoli = new HashSet<>(0);
-//	private List<Ruolo> ruoli = new ArrayList<>(0);
-//	private List<String> ruoliS = new ArrayList<>(0);
+	private Set<RuoloDTO> ruoli = new HashSet<>(0);
 	private Integer esperienzaAccumulata;
 	private Double creditoAccumulato;
+	private Set<TavoloDTO> tavoliCreati = new HashSet<>(0);
 
 	public UtenteDTO() {
 
@@ -43,30 +40,39 @@ public class UtenteDTO {
 	}
 
 	public UtenteDTO(Long id, String nome, String cognome, String username, String password, Date dataRegistrazione,
-			StatoUtenzaDTO statoUtenza, Integer esperienzaAccumulata, Double creditoAccumulato) {
+			StatoUtenzaDTO statoUtenza, Integer esperienzaAccumulata, Double creditoAccumulato, Set<RuoloDTO> ruoli) {
 		this(id, nome, cognome, username, password);
 		this.dataRegistrazione = dataRegistrazione;
 		this.statoUtenza = statoUtenza;
 		this.esperienzaAccumulata = esperienzaAccumulata;
 		this.creditoAccumulato = creditoAccumulato;
-//		this.ruoliS = ruoliS;
-//		for (Ruolo ruolo : ruoli) {
-//			this.getRuoli().add(ruolo);
-//		}
+		this.ruoli = ruoli;
+
 	}
 
 	public static UtenteDTO buildUtenteDTOInstance(Utente utente) {
-//		List<String> ruoli = new ArrayList<>(0);
-//		for (Ruolo ruolo : utente.getRuoli()) {
-//			ruoli.add(Long.toString(ruolo.getId()));
-//		}
 		UtenteDTO utenteDTO = new UtenteDTO(utente.getId(), utente.getNome(), utente.getCognome(), utente.getUsername(),
-				utente.getPassword(), utente.getDataRegistrazione(), StatoUtenzaDTO.buildStatoUtenzaDTOInstance(utente.getStatoUtenza()), 
-				utente.getEsperienzaAccumulata(), utente.getCreditoAccumulato());
+				utente.getPassword(), utente.getDataRegistrazione(),
+				StatoUtenzaDTO.buildStatoUtenzaDTOInstance(utente.getStatoUtenza()), utente.getEsperienzaAccumulata(),
+				utente.getCreditoAccumulato(),utente.getRuoli().stream().map(r -> RuoloDTO.buildRuoloDTOInstance(r)).collect(Collectors.toSet()));
+		utente.getTavoliCreati().stream().map(t -> TavoloDTO.buildTavoloDTOInstance(t)).collect(Collectors.toSet());
 
-		utenteDTO.setRuoli(utente.getRuoli());
 		return utenteDTO;
 
+	}
+
+	public static Utente buildUtenteInstance(UtenteDTO input) {
+		Utente utente = new Utente(input.getId(), input.getNome(), input.getCognome(), input.getUsername(),
+				input.getPassword());
+		utente.setDataRegistrazione(input.getDataRegistrazione());
+		utente.setStatoUtenza(StatoUtenzaDTO.buildStatoUtenzaInstance(input.getStatoUtenza()));
+		utente.setRuoli(input.getRuoli().stream().map(r -> RuoloDTO.buildRuoloInstance(r)).collect(Collectors.toSet()));
+		utente.setEsperienzaAccumulata(input.getEsperienzaAccumulata() != null ? input.getEsperienzaAccumulata() : 0);
+		utente.setCreditoAccumulato(input.getCreditoAccumulato() != null ? input.getCreditoAccumulato() : 0d);
+//		TavoloDTO.buildTavoloInstance(t)
+		utente.setTavoliCreati(input.getTavoliCreati().stream().map(t -> TavoloDTO.buildTavoloInstance(t)).collect(Collectors.toSet()));
+		
+		return utente;
 	}
 
 	public static Utente buildUtenteInstanceForFindByExample(UtenteDTO input) {
@@ -76,12 +82,13 @@ public class UtenteDTO {
 		example.setUsername(StringUtils.isNotBlank(input.getUsername()) ? input.getUsername() : null);
 		example.setPassword(StringUtils.isNotBlank(input.getPassword()) ? input.getPassword() : null);
 		example.setDataRegistrazione(input.getDataRegistrazione() != null ? input.getDataRegistrazione() : null);
-		example.setStatoUtenza(input.getStatoUtenza() != null ? StatoUtenzaDTO.buildStatoUtenzaInstance(input.getStatoUtenza()): null);
-		example.setEsperienzaAccumulata(input.getEsperienzaAccumulata() != null ? input.getEsperienzaAccumulata() : null);
+		example.setStatoUtenza(
+				input.getStatoUtenza() != null ? StatoUtenzaDTO.buildStatoUtenzaInstance(input.getStatoUtenza())
+						: null);
+		example.setEsperienzaAccumulata(
+				input.getEsperienzaAccumulata() != null ? input.getEsperienzaAccumulata() : null);
 		example.setCreditoAccumulato(input.getCreditoAccumulato() != null ? input.getCreditoAccumulato() : null);
-//		for (String ruolo : input.getRuoliS()) {
-//			example.getRuoli().add(new Ruolo(Long.parseLong(ruolo)));
-//		}
+
 		return example;
 	}
 
@@ -133,7 +140,6 @@ public class UtenteDTO {
 		this.dataRegistrazione = dataRegistrazione;
 	}
 
-
 	public StatoUtenzaDTO getStatoUtenza() {
 		return statoUtenza;
 	}
@@ -158,17 +164,23 @@ public class UtenteDTO {
 		this.creditoAccumulato = creditoAccumulato;
 	}
 
-	public Set<Ruolo> getRuoli() {
+	public Set<RuoloDTO> getRuoli() {
 		return ruoli;
 	}
 
-	public void setRuoli(Set<Ruolo> ruoli) {
+	public void setRuoli(Set<RuoloDTO> ruoli) {
 		this.ruoli = ruoli;
 	}
 
+	public Set<TavoloDTO> getTavoliCreati() {
+		return tavoliCreati;
+	}
+
+	public void setTavoliCreati(Set<TavoloDTO> tavoliCreati) {
+		this.tavoliCreati = tavoliCreati;
+	}
+
 }
-
-
 
 //package it.prova.pokeronline.dto;
 //

@@ -9,38 +9,37 @@
 <body>
 
 	<div class="container">
-		<%@ include file="../header.jsp"%>
+		<%@ include file="../../header.jsp"%>
+
 
 		<div class="jumbotron">
 			<div class="container">
-				<h1 class="display-4">Partita</h1>
+				<h1 class="display-4">Gioco</h1>
+				<c:if test="${sessionScope.userInfo != null && !sessionScope.userInfo.isInGioco()}">
 				<p>
 					<a class="btn btn-primary btn-lg"
-						href="${pageContext.request.contextPath}/utente/play/homePlay"
-						role="button">Vai al Gioco &raquo;</a>
+						href="${pageContext.request.contextPath}/utente/play/search"
+						role="button">Cerca un tavolo &raquo;</a>
 				</p>
+				</c:if>
+				<c:if test="${sessionScope.userInfo != null && sessionScope.userInfo.isInGioco()}">
+				<p>
+					<a class="btn btn-primary btn-lg"
+						href="${pageContext.request.contextPath}/utente/play/riprendi"
+						role="button">Riprendi la partita &raquo;</a>
+				</p>
+				</c:if>
 			</div>
 
 		</div>
 
 		<div class="jumbotron">
 			<div class="container">
-				<h1 class="display-4">Gestione Utenti</h1>
+				<h1 class="display-4">Ricarica credito</h1>
 				<p>
 					<a class="btn btn-primary btn-lg"
-						href="${pageContext.request.contextPath}/admin/search"
-						role="button">Vai alla Gestione Utenti &raquo;</a>
-				</p>
-			</div>
-		</div>
-
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="display-4">Gestione Tavoli</h1>
-				<p>
-					<a class="btn btn-primary btn-lg"
-						href="${pageContext.request.contextPath}/utente/tavolo/search"
-						role="button">Gestisci i tuoi Tavoli &raquo;</a>
+						href="${pageContext.request.contextPath}/utente/play/prepareRicarica"
+						role="button">Vai alla Ricarica Credito &raquo;</a>
 				</p>
 			</div>
 		</div>
@@ -48,8 +47,6 @@
 
 
 
-
-		<%@ include file="../footer.jsp"%>
 	</div>
 </body>
 </html>

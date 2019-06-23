@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inserisci un nuovo Utente</title>
+<title>Modifica dati Utente</title>
 </head>
 <body>
 
@@ -13,10 +13,14 @@
    <%@ include file="../header.jsp" %>
       
     <div class="page-header">
-	  <h3>Inserisci un nuovo Utente</h3>
+	  <h3>Modifica dati Utente</h3>
 	</div>
 
-      	<form:form class="form-horizontal" action="save" method="post" commandName="utenteCommand">
+      	<form:form class="form-horizontal" action="update" method="post" commandName="utenteCommand">
+      	
+      		<form:hidden path="id"/>
+      		<form:hidden path="dataRegistrazione"/>
+      		
       		<div class="form-group">
       			<label class="control-label col-sm-2" for="nomeId">Nome:</label>
 	    		<div class="col-sm-4">
@@ -59,7 +63,6 @@
 					<form:errors path="creditoAccumulato" cssStyle="color:red;"/>
 			 	</div>
   			</div>
-
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="statoUtenzaId">Stato Utenza:</label>
 				<div class="col-sm-4">
@@ -71,19 +74,6 @@
 				</div>
 			</div>
 			
-	<!--	
-					<div class="form-group">
-				<label class="control-label col-sm-2" for="ruoliId">Ruolo:</label>
-				<div class="col-sm-4">
- 				<c:forEach items="${listRuoli}" var="ruoloItem">
- 						<form:checkbox path="ruoli" value="${ruoloItem.id}" />${ruoloItem.descrizione}<br>
- 					</c:forEach>
-						<form:checkboxes path="ruoli" items="${listRuoli}" itemValue="id" />
-					<form:errors path="ruoli" cssStyle="color:red;" />
-				</div>
-			</div>  
-			
-	-->
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="statoUtenzaId">Ruolo:</label>
 				<div class="col-sm-4">
@@ -100,7 +90,7 @@
 
 			<div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
-		        <button type="submit" class="btn btn-primary btn-md">Inserisci</button>
+		        <button type="submit" class="btn btn-primary btn-md">Aggiorna dati</button>
 		      </div>
 		    </div>
 		</form:form>

@@ -17,10 +17,6 @@
 		</div>
 		<div class="container-fluid">
 			<dl class="row">
-				<dt class="col-sm-3 text-right">Id</dt>
-				<dd class="col-sm-9">${tavoloCommand.id }</dd>
-			</dl>
-			<dl class="row">
 				<dt class="col-sm-3 text-right">Denominazione</dt>
 				<dd class="col-sm-9">${tavoloCommand.denominazione }</dd>
 			</dl>
@@ -48,7 +44,7 @@
 		</div>
 		<div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
-	        <a href="list" class="btn btn-primary btn-md">Torna alla lista</a>
+	        <a href="siediti?idTavolo=${tavoloCommand.id }" class="btn btn-primary btn-md">Siediti</a>
 	      </div>
 	    </div>
 
