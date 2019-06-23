@@ -21,7 +21,9 @@ public class Ruolo {
 	public Ruolo() {
 		
 	}
-	
+	public Ruolo(Long id) {
+		this.id = id;
+	}
 	public Ruolo(Long id, String descrizione, String codice) {
 		super();
 		this.id = id;
@@ -29,6 +31,22 @@ public class Ruolo {
 		this.codice = codice;
 	}
 
+	@Override
+    public int hashCode() {
+        return new Long(id).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (! (obj instanceof Ruolo)) {
+            return false;
+        }
+        return this.id == ((Ruolo)obj).getId();
+    }
+    
 	public Long getId() {
 		return id;
 	}
@@ -53,4 +71,7 @@ public class Ruolo {
 		this.codice = codice;
 	}
 		
+	public String toString() {
+		return descrizione;
+	}
 }

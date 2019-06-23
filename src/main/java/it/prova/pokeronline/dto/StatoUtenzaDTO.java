@@ -1,34 +1,36 @@
-package it.prova.pokeronline.model;
+package it.prova.pokeronline.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import it.prova.pokeronline.model.StatoUtenza;
 
-@Entity
-public class StatoUtenza {
+public class StatoUtenzaDTO {
 
 	public final static String CREATO = "Creato";
 	public final static String ATTIVO = "Attivo";
 	public final static String INATTIVO = "Inattivo";
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String descrizione;
 	private String codice;
 	
-	public StatoUtenza() {
+	public StatoUtenzaDTO() {
 		
 	}
 
-	public StatoUtenza(Long id, String descrizione, String codice) {
+	public StatoUtenzaDTO(Long id, String descrizione, String codice) {
 		super();
 		this.id = id;
 		this.descrizione = descrizione;
 		this.codice = codice;
 	}
 
+	public static StatoUtenzaDTO buildStatoUtenzaDTOInstance(StatoUtenza stato) {
+		return new StatoUtenzaDTO(stato.getId(), stato.getDescrizione(), stato.getCodice());
+	}
+	
+	public static StatoUtenza buildStatoUtenzaInstance(StatoUtenzaDTO stato) {
+		return new StatoUtenza(stato.getId(), stato.getDescrizione(), stato.getCodice());
+	}
+	
 	public Long getId() {
 		return id;
 	}

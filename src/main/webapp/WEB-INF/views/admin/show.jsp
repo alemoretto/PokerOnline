@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dettaglio Tavolo</title>
+<title>Dettaglio Utente</title>
 </head>
 <body>
 
@@ -35,6 +35,20 @@
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Password</dt>
 				<dd class="col-sm-9">${utenteCommand.password}</dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Stato Utenza</dt>
+				<dd class="col-sm-9">${utenteCommand.statoUtenza.descrizione}</dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Ruoli</dt>
+				<dd class="col-sm-9">
+					<c:forEach items="${utenteCommand.ruoli}" var="ruolo"
+						varStatus="loop">
+				${ruolo.descrizione} 
+				<c:if test="${utenteCommand.ruoli.size()-1 > loop.index}">, </c:if>
+					</c:forEach>
+				</dd>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Data di registrazione</dt>

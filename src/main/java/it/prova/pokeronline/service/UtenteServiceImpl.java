@@ -29,6 +29,12 @@ public class UtenteServiceImpl implements UtenteService {
 	public Utente caricaSingolo(Long id) {
 		return utenteRepository.findOne(id);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Utente caricaSingoloConStatoERuoli(Long id) {
+		return utenteRepository.caricaSingoloConStatoERuoli(id);
+	}
 
 	@Override
 	public void aggiorna(Utente utenteInstance) {

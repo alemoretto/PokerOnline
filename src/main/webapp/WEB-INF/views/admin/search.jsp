@@ -38,7 +38,7 @@
   			<div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button type="submit" class="btn btn-primary btn-md">Effettua Ricerca</button>
-		        <a href="insert" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
+		        <a href="create" class="btn btn-primary btn-md">Inserisci nuovo Utente</a>
 		      </div>
 		    </div>
 		</form:form>
