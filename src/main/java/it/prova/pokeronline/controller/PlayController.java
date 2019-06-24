@@ -170,6 +170,7 @@ public class PlayController {
 		Utente utenteInSession = (Utente) session.getAttribute("userInfo");
 		Utente giocatore = utenteService.caricaSingolo(utenteInSession.getId());
 		
+		giocatore.setEsperienzaAccumulata(giocatore.getEsperienzaAccumulata() + 10);
 		giocatore.setTavoloGiocato(null);
 		giocatore.setInGioco(false);
 		

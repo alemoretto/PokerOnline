@@ -59,7 +59,7 @@ public class HomeController {
 		Utente utenteCheAccede = utenteService.eseguiAccesso(utenteInstance.getUsername(),
 				utenteInstance.getPassword());
 		if (utenteCheAccede != null) {
-			session.setAttribute("userInfo", utenteCheAccede);
+			session.setAttribute("userInfo", utenteService.caricaSingoloConStatoERuoli(utenteCheAccede.getId()));
 			return new ModelAndView("utente/home");
 		}
 
@@ -93,9 +93,12 @@ public class HomeController {
 			HttpSession session) {
 
 		utenteDTOInstance.setDataRegistrazione(new Date());
-		utenteDTOInstance.getRuoli().add(RuoloDTO.buildRuoloDTOInstance(ruoloService.findByCodice(Ruolo.CLASSIC_PLAYER_ROLE)));
+//		utenteDTOInstance.getRuoli().add(RuoloDTO.buildRuoloDTOInstance(ruoloService.findByCodice(Ruolo.CLASSIC_PLAYER_ROLE)));
+		utenteDTOInstance.getRuoli().add(new RuoloDTO(2L));
 		utenteDTOInstance.setStatoUtenza(StatoUtenzaDTO.buildStatoUtenzaDTOInstance(statoUtenzaService.findByCodice(StatoUtenza.CREATO)));
 		// se la validazione fallisce
+		
+		
 		new NewUtenteValidator().validate(utenteDTOInstance, result);
 		if (result.hasErrors()) {
 			return "signup";

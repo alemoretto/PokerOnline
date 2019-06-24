@@ -30,11 +30,14 @@
 					<a class="dropdown-item" href="#">Something else here</a>
 				</div></li>
 		</ul>
+		<c:if test="${sessionScope.userInfo != null}">
 		 <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text">Utente: ${userInfo.username }(${userInfo.nome } ${userInfo.cognome })
+            <li><p class="navbar-text">Utente: <strong>${userInfo.username } </strong> (${userInfo.nome } ${userInfo.cognome }) 
+            - <p>${userInfo.creditoAccumulato} euro</p> <p>EXP ${userInfo.esperienzaAccumulata}</p>
             <a href="${pageContext.request.contextPath }/logout">Logout</a></p> 
             </li>
           </ul>
+          </c:if>
 	</div>
 </nav>
 

@@ -41,6 +41,9 @@
 	    		<div class="col-sm-4">
 					<form:input class="form-control" path="username" id="usernameId" />
 					<form:errors path="username" cssStyle="color:red;"/>
+					<c:if test="${erroreUsername != null }">
+					<div style="color:red">${erroreUsername }</div>
+					</c:if>
 			 	</div>
   			</div>
 			<div class="form-group">

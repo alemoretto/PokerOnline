@@ -24,9 +24,9 @@ public class AdminValidator implements Validator {
 		if (utenteDTO.getStatoUtenza().getId() == -1L) {
 			errors.rejectValue("statoUtenza", "required", "Seleziona uno stato");
 		}
-			if (utenteDTO.getRuoli() == null || utenteDTO.getRuoli().isEmpty()) {
-				errors.rejectValue("ruoli", "required", "Selezionare almeno un ruolo");
-			}
+		if (utenteDTO.getRuoli() == null || utenteDTO.getRuoli().isEmpty()) {
+			errors.rejectValue("ruoli", "required", "Selezionare almeno un ruolo");
+		}
 
 	}
 }

@@ -22,18 +22,6 @@
 			</div>
 
 		</div>
-
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="display-4">Gestione Utenti</h1>
-				<p>
-					<a class="btn btn-primary btn-lg"
-						href="${pageContext.request.contextPath}/admin/search"
-						role="button">Vai alla Gestione Utenti &raquo;</a>
-				</p>
-			</div>
-		</div>
-
 		<div class="jumbotron">
 			<div class="container">
 				<h1 class="display-4">Gestione Tavoli</h1>
@@ -45,6 +33,18 @@
 			</div>
 		</div>
 
+		<c:if test="${sessionScope.userInfo != null && sessionScope.userInfo.isAdmin()}"> 
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="display-4">Gestione Utenti</h1>
+					<p>
+						<a class="btn btn-primary btn-lg"
+							href="${pageContext.request.contextPath}/admin/search"
+							role="button">Vai alla Gestione Utenti &raquo;</a>
+					</p>
+				</div>
+			</div>
+		</c:if>
 
 
 
